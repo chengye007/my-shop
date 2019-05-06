@@ -4018,7 +4018,7 @@ var View = /** @class */ (function (_super) {
             _this.unrenderBusinessHours();
         }, 'businessHours', 'destroy');
     };
-    // Misc view rendering utils
+    // Misc view rendering com.zheng.my.shop.commons.utils
     // -----------------------------------------------------------------------------------------------------------------
     // Binds DOM handlers to elements that reside outside the view container, such as the document
     View.prototype.bindGlobalHandlers = function () {
@@ -7324,7 +7324,7 @@ var DayGrid = /** @class */ (function (_super) {
         var _this = _super.call(this, view) || this;
         _this.cellWeekNumbersVisible = false; // display week numbers in day cell?
         _this.bottomCoordPadding = 0; // hack for extending the hit area for the last row of the coordinate grid
-        // isRigid determines whether the individual rows should ignore the contents and be a constant height.
+        // isRigid determines whether the individual rows should ignore the contents and be a com.zheng.my.shop.commons.constant height.
         // Relies on the view's colCnt and rowCnt. In the future, this component should probably be self-sufficient.
         _this.isRigid = false;
         _this.hasAllDayBusinessHours = true;
@@ -7618,7 +7618,7 @@ var DayGrid = /** @class */ (function (_super) {
         }
     };
     // Computes the number of levels a row will accomodate without going outside its bounds.
-    // Assumes the row is "rigid" (maintains a constant height regardless of what is inside).
+    // Assumes the row is "rigid" (maintains a com.zheng.my.shop.commons.constant height regardless of what is inside).
     // `row` is the row number.
     DayGrid.prototype.computeRowLevelLimit = function (row) {
         var rowEl = this.rowEls.eq(row); // the containing "fake" row div
@@ -8006,7 +8006,7 @@ var BasicView = /** @class */ (function (_super) {
         }
         return '';
     };
-    // Determines whether each row should have a constant height
+    // Determines whether each row should have a com.zheng.my.shop.commons.constant height
     BasicView.prototype.hasRigidRows = function () {
         var eventLimit = this.opt('eventLimit');
         return eventLimit && typeof eventLimit !== 'number';
@@ -8038,7 +8038,7 @@ var BasicView = /** @class */ (function (_super) {
         this.scroller.clear();
         util_1.uncompensateScroll(headRowEl);
         this.dayGrid.removeSegPopover(); // kill the "more" popover if displayed
-        // is the event limit a constant level number?
+        // is the event limit a com.zheng.my.shop.commons.constant level number?
         if (eventLimit && typeof eventLimit === 'number') {
             this.dayGrid.limitRows(eventLimit); // limit the levels first so the height can redistribute after
         }
@@ -9913,7 +9913,7 @@ var RenderQueue = /** @class */ (function (_super) {
             var q = this.q;
             // if there was a different namespace task in the meantime,
             // that forces all previously-waiting tasks to suddenly execute.
-            // TODO: find a way to do this in constant time.
+            // TODO: find a way to do this in com.zheng.my.shop.commons.constant time.
             for (var i = 0; i < q.length; i++) {
                 if (q[i].namespace !== this.waitNamespace) {
                     return true; // allow execution

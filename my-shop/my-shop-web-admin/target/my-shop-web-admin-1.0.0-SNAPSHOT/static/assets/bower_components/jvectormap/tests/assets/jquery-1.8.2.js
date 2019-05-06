@@ -6609,7 +6609,7 @@ function showHide( elements, show ) {
 	}
 
 	// Set the display of most of the elements in a second loop
-	// to avoid the constant reflow
+	// to avoid the com.zheng.my.shop.commons.constant reflow
 	for ( index = 0; index < length; index++ ) {
 		elem = elements[ index ];
 		if ( !elem.style ) {
@@ -8556,7 +8556,7 @@ var fxNow, timerId,
 				if ( unit !== "px" && start ) {
 					// Iteratively approximate from a nonzero starting point
 					// Prefer the current property, because this process will be trivial if it uses the same units
-					// Fallback to end or a simple constant
+					// Fallback to end or a simple com.zheng.my.shop.commons.constant
 					start = jQuery.css( tween.elem, prop, true ) || end || 1;
 
 					do {

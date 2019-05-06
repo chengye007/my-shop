@@ -5,7 +5,7 @@ COMPILER ?= `which uglifyjs` --no-copyright
 
 SRC_FILES = $(SRC_DIR)/header.js\
 	$(SRC_DIR)/defaults.js\
-	$(SRC_DIR)/utils.js\
+	$(SRC_DIR)/com.zheng.my.shop.commons.utils.js\
 	$(SRC_DIR)/simpledraw.js\
 	$(SRC_DIR)/rangemap.js\
 	$(SRC_DIR)/interact.js\

@@ -39,6 +39,15 @@
         <section class="content">
             <div class="row">
                 <div class="col-md-12">
+                    <c:if test="${baseResult != null}">
+                        <div class="alert alert-${baseResult.status == 200 ? "success" : "danger"} alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-ban"></i> ${baseResult.status == 200 ? "成功" : "失败"} </h4>
+                                ${baseResult.message}
+                        </div>
+                    </c:if>
+
+
                     <!-- Horizontal Form -->
                     <div class="box box-info">
                         <div class="box-header with-border">
@@ -46,14 +55,14 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" action="/user/list">
+                        <form class="form-horizontal" action="/user/save" method="post">
                             <div class="box-body">
                                 <%-- email --%>
                                 <div class="form-group">
                                     <label for="inputUserEmail" class="col-sm-2 control-label">邮箱</label>
 
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputUserEmail" placeholder="请输入邮箱">
+                                        <input type="email" class="form-control" id="inputUserEmail" name="email" placeholder="请输入邮箱" value="${createUser.email}">
                                     </div>
                                 </div>
                                 <%-- password --%>
@@ -61,7 +70,7 @@
                                     <label for="inputPassword" class="col-sm-2 control-label">密码</label>
 
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码">
+                                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="请输入密码" value="${createUser.password}">
                                     </div>
                                 </div>
 
@@ -70,7 +79,7 @@
                                     <label for="inputUserUsername" class="col-sm-2 control-label">姓名</label>
 
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputUserUsername" placeholder="请输入姓名">
+                                        <input type="text" class="form-control" id="inputUserUsername" name="username" placeholder="请输入姓名" value="${createUser.username}">
                                     </div>
                                 </div>
 
@@ -79,7 +88,7 @@
                                     <label for="inputPhone" class="col-sm-2 control-label">手机号</label>
 
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPhone" placeholder="请输入手机号">
+                                        <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="请输入手机号" value="${createUser.phone}">
                                     </div>
                                 </div>
                             <!-- /.box-body -->

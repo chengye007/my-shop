@@ -40,6 +40,16 @@
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
+
+                    <c:if test="${baseResult != null}">
+                        <div class="alert alert-${baseResult.status == 200 ? "success" : "danger"} alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-ban"></i> ${baseResult.status == 200 ? "成功" : "失败"} </h4>
+                                ${baseResult.message}
+                        </div>
+                    </c:if>
+
+
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">用户列表</h3>

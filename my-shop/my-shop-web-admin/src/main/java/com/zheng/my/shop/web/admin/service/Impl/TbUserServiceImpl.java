@@ -1,8 +1,12 @@
 package com.zheng.my.shop.web.admin.service.Impl;
 
+import com.zheng.my.shop.commons.dto.BaseResult;
+import com.zheng.my.shop.commons.utils.RegexUtils;
 import com.zheng.my.shop.domain.TbUser;
 import com.zheng.my.shop.web.admin.dao.TbUserDao;
 import com.zheng.my.shop.web.admin.service.TbUserService;
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -21,28 +25,30 @@ public class TbUserServiceImpl implements TbUserService {
         return tbUserDao.selectAll();
     }
 
-    /**
-     * 检查提交数据的合法性
-     * @param tbUser
-     */
-    private void check(TbUser tbUser) {
-
-    }
 
     @Override
-    public void save(TbUser tbUser) {
-        tbUser.setUpdated(new Date());
+    public BaseResult save(TbUser tbUser) {
+        BaseResult baseResult = checkResult(tbUser);
 
-        // 新增用户
-        if (tbUser.getId() == null) {
-            tbUser.setCreated(new Date());
-            tbUserDao.insert(tbUser);
-        }
+        // 检查成功 就进行用户编辑操作
+        if (baseResult.getStatus() == BaseResult.STATUS_SUCCESS) {
+            tbUser.setUpdated(new Date());
+            // 新增用户
+            if (tbUser.getId() == null) {
+                // 加密密码
+                tbUser.setPassword(DigestUtils.md5DigestAsHex(tbUser.getPassword().getBytes()));
+                tbUser.setCreated(new Date());
+                tbUserDao.insert(tbUser);
+            }
 
-        //  编辑用户
-        else {
-            tbUserDao.update(tbUser);
+            //  编辑用户
+            else {
+                tbUserDao.update(tbUser);
+            }
+
+            baseResult.setMessage("保存用户信息成功");
         }
+        return baseResult;
     }
 
     @Override
@@ -81,9 +87,59 @@ public class TbUserServiceImpl implements TbUserService {
                 return userByEmail;
             }
         }
-
         return null;
     }
 
+
+
+    /**
+     * 检查提交数据的合法性
+     * @param tbUser
+     */
+    private BaseResult checkResult(TbUser tbUser) {
+        BaseResult baseResult = BaseResult.success();
+
+        if (StringUtils.isBlank(tbUser.getEmail())) {
+            baseResult = BaseResult.fail("邮箱不能为空");
+        }
+        else if (!RegexUtils.isEmail(tbUser.getEmail())) {
+            baseResult = BaseResult.fail("邮箱格式错误");
+        }
+
+        else if (StringUtils.isBlank(tbUser.getPassword())) {
+            baseResult = BaseResult.fail("密码不能为空");
+        }
+
+        else if (StringUtils.isBlank(tbUser.getUsername())) {
+            baseResult = BaseResult.fail("姓名不能为空");
+        }
+
+        else if (StringUtils.isBlank(tbUser.getPhone())) {
+            baseResult = BaseResult.fail("号码不能为空");
+        }
+
+        else if (!RegexUtils.isMobile(tbUser.getPhone())) {
+            baseResult = BaseResult.fail("手机格式不正确");
+        }
+
+        else if (isExist(tbUser)) {
+            baseResult = BaseResult.fail("用户已经存在");
+        }
+        return baseResult;
+    }
+
+    /**
+     * 判断用户是否已经存在
+     * @param tbUser
+     * @return [true 存在][false 不存在]
+     */
+    private boolean isExist(TbUser tbUser) {
+        // 判断是否已经存在用户
+        TbUser userByEmail = tbUserDao.getUserByEmail(tbUser.getEmail());
+        if (userByEmail != null) {
+            return true;
+        }
+        return false;
+    }
 
 }

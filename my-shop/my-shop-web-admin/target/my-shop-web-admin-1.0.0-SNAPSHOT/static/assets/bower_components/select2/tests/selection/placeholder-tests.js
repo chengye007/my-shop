@@ -5,7 +5,7 @@ var SingleSelection = require('select2/selection/single');
 
 var $ = require('jquery');
 var Options = require('select2/options');
-var Utils = require('select2/utils');
+var Utils = require('select2/com.zheng.my.shop.commons.utils');
 
 var SinglePlaceholder = Utils.Decorate(SingleSelection, Placeholder);
 

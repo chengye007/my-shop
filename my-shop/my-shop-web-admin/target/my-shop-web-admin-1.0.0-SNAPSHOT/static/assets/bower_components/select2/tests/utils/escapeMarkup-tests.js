@@ -1,6 +1,6 @@
 module('Utils - escapeMarkup');
 
-var Utils = require('select2/utils');
+var Utils = require('select2/com.zheng.my.shop.commons.utils');
 
 test('text passes through', function (assert) {
   var text = 'testing this';

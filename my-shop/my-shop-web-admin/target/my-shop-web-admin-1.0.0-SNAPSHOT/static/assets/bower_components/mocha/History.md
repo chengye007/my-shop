@@ -42,7 +42,7 @@
   * fix: ensure process exit code is preserved when using --no-exit (#1059)
   * fix: return true from window.onerror handler (#868)
   * fix: xunit reporter to use process.stdout.write (#1068)
-  * fix: utils.clean(str) indentation (#761)
+  * fix: com.zheng.my.shop.commons.utils.clean(str) indentation (#761)
   * fix: xunit reporter returning test duration a NaN (#1039)
 
 1.15.1 / 2013-12-03
@@ -223,8 +223,8 @@
   * add support to multiple `Mocha#globals()` calls, and strings
   * add `mocha.reporter()` constructor support [jfirebaugh]
   * add `mocha.timeout()`
-  * move query-string parser to utils.js
-  * move highlight code to utils.js
+  * move query-string parser to com.zheng.my.shop.commons.utils.js
+  * move highlight code to com.zheng.my.shop.commons.utils.js
   * fix third-party reporter support [exogen]
   * fix client-side API to match node-side [jfirebaugh]
   * fix mocha in iframe [joliss]
@@ -242,7 +242,7 @@
   * add mkdir -p to `mocha init`. Closes #539
   * add `.only()`. Closes #524
   * add `.skip()`. Closes #524
-  * change str.trim() to use utils.trim(). Closes #533
+  * change str.trim() to use com.zheng.my.shop.commons.utils.trim(). Closes #533
   * fix HTML progress indicator retina display
   * fix url-encoding of click-to-grep HTML functionality
 

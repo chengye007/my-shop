@@ -2395,10 +2395,10 @@
         }
     );
 
-    // constant that refers to the ISO standard
+    // com.zheng.my.shop.commons.constant that refers to the ISO standard
     hooks.ISO_8601 = function () {};
 
-    // constant that refers to the RFC 2822 form
+    // com.zheng.my.shop.commons.constant that refers to the RFC 2822 form
     hooks.RFC_2822 = function () {};
 
     // date from string and format string

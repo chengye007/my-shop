@@ -57,7 +57,7 @@
 
 		'use strict';
 
-		// -------------------------- utils -------------------------- //
+		// -------------------------- com.zheng.my.shop.commons.utils -------------------------- //
 
 		var slice = Array.prototype.slice;
 

@@ -1,5 +1,6 @@
 package com.zheng.my.shop.web.admin.web.controller;
 
+import com.zheng.my.shop.commons.dto.BaseResult;
 import com.zheng.my.shop.domain.TbUser;
 import com.zheng.my.shop.web.admin.service.TbUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +44,20 @@ public class UserController {
     }
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public String save(TbUser tbUser, RedirectAttributes redirectAttributes) {
-//        redirectAttributes.addFlashAttribute(user);
-        tbUserService.save(tbUser);
-        return "redirect:/user/list";
+    public String save(TbUser tbUser, Model model, RedirectAttributes redirectAttributes) {
+
+        BaseResult baseResult = tbUserService.save(tbUser);
+        // 保存成功进行重定向
+        if (baseResult.getStatus() == BaseResult.STATUS_SUCCESS) {
+           redirectAttributes.addFlashAttribute("baseResult", baseResult);
+            return "redirect:/user/list";
+        }
+
+        // 保存失败 进行跳转
+        else {
+            model.addAttribute("baseResult", baseResult);
+            model.addAttribute("createUser", tbUser);
+            return "user_form";
+        }
     }
 }

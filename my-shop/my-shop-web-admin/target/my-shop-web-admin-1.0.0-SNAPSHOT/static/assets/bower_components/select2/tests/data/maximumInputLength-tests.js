@@ -3,7 +3,7 @@ module('Data adapters - Maximum input length');
 var MaximumInputLength = require('select2/data/maximumInputLength');
 var $ = require('jquery');
 var Options = require('select2/options');
-var Utils = require('select2/utils');
+var Utils = require('select2/com.zheng.my.shop.commons.utils');
 
 function MaximumInputStub () {
   this.called = false;
