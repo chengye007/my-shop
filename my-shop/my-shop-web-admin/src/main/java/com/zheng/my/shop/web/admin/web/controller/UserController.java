@@ -84,4 +84,17 @@ public class UserController {
             return "user_form";
         }
     }
+
+    /**
+     * 模糊查询 关键字为 邮箱 姓名 或者 电话
+     * @param keyWord
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "search", method = RequestMethod.POST)
+    public String search(String keyWord, Model model) {
+        List<TbUser> tbUsers = tbUserService.search(keyWord);
+        model.addAttribute("tbUsers", tbUsers);
+        return "user_list";
+    }
 }

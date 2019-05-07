@@ -43,10 +43,10 @@ public interface TbUserDao {
 
     /**
      * get user by name
-     * @param user
+     * @param username
      * @return
      */
-    List<TbUser> selectByName(TbUser user);
+    List<TbUser> selectByName(String username);
 
     /**
      * get user entry by the email
@@ -54,4 +54,11 @@ public interface TbUserDao {
      * @return user information or null
      */
     TbUser getUserByEmail(String email);
+
+    /**
+     * 按邮箱、姓名 或者 手机号查询
+     * @param tbUser
+     * @return
+     */
+    List<TbUser> search(TbUser tbUser);
 }

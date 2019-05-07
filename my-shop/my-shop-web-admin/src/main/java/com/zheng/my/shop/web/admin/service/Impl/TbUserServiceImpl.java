@@ -72,9 +72,7 @@ public class TbUserServiceImpl implements TbUserService {
 
     @Override
     public List<TbUser> selectByName(String name) {
-        TbUser user = new TbUser();
-        user.setUsername(name);
-        return tbUserDao.selectByName(user);
+        return tbUserDao.selectByName(name);
     }
 
     @Override
@@ -88,6 +86,17 @@ public class TbUserServiceImpl implements TbUserService {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<TbUser> search(String keyWord) {
+        TbUser tbUser = new TbUser();
+
+        tbUser.setUsername(keyWord);
+        tbUser.setEmail(keyWord);
+        tbUser.setPhone(keyWord);
+
+        return tbUserDao.search(tbUser);
     }
 
 
@@ -107,7 +116,7 @@ public class TbUserServiceImpl implements TbUserService {
         }
 
         else if (StringUtils.isBlank(tbUser.getPassword())) {
-            baseResult = BaseResult.fail("密码不能为空");
+            baseResult = BaseResult.fail("  密码不能为空");
         }
 
         else if (StringUtils.isBlank(tbUser.getUsername())) {

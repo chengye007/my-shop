@@ -2,6 +2,8 @@ package com.zheng.my.shop.web.admin.service.test;
 
 import com.zheng.my.shop.domain.TbUser;
 import com.zheng.my.shop.web.admin.service.TbUserService;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,16 @@ public class TbUserServiceTest {
 
     @Autowired
     private TbUserService tbUserServices;
+
+    @Before
+    public void before() {
+
+    }
+
+    @After
+    public void after() {
+
+    }
 
     @Test
     public void testSelectAll() {

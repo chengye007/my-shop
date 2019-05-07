@@ -24,3 +24,11 @@
 <script src="/static/assets/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="/static/assets/js/adminlte.min.js"></script>
+
+<!-- jquery validation -->
+<script src="/static/assets/plugins/jquery-validation-1.19.0/js/jquery.validate.min.js"></script>
+<script src="/static/assets/plugins/jquery-validation-1.19.0/js/localization/messages_zh.js"></script>
+<script src="/static/assets/plugins/jquery-validation-1.19.0/js/additional-methods.min.js"></script>
+
+<!-- App -->
+<script src="/static/assets/app/validate.js"></script>

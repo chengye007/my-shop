@@ -26,4 +26,11 @@ public interface TbUserService {
      * @return user information or null
      */
     TbUser login(String email, String password);
+
+    /**
+     * 按邮箱、手机号码 和 姓名进行查找
+     * @param keyWord
+     * @return
+     */
+    List<TbUser> search(String keyWord);
 }
