@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>我的商城 | 用户管理</title>
@@ -55,49 +55,53 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" action="/user/save" method="post">
-                            <div class="box-body">
+                        <form:form cssClass="form-horizontal" action="/user/save" method="post" modelAttribute="tbUser">
+                        <div class="box-body">
                                 <%-- email --%>
-                                <div class="form-group">
-                                    <label for="inputUserEmail" class="col-sm-2 control-label">邮箱</label>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-2 control-label">邮箱</label>
 
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputUserEmail" name="email" placeholder="请输入邮箱" value="${createUser.email}">
-                                    </div>
+                                <div class="col-sm-10">
+                                    <form:input cssClass="form-control" path="email" placeholder="请输入邮箱" />
                                 </div>
+                            </div>
                                 <%-- password --%>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">密码</label>
 
-                                    <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="请输入密码" value="${createUser.password}">
-                                    </div>
+                                <div class="col-sm-10">
+                                    <form:password cssClass="form-control" path="password" placeholder="请输入密码" />
                                 </div>
+                            </div>
 
                                 <%-- name --%>
-                                <div class="form-group">
-                                    <label for="inputUserUsername" class="col-sm-2 control-label">姓名</label>
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label">姓名</label>
 
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputUserUsername" name="username" placeholder="请输入姓名" value="${createUser.username}">
-                                    </div>
+                                <div class="col-sm-10">
+                                    <form:input cssClass="form-control" path="username" placeholder="请输入姓名" />
                                 </div>
+                            </div>
 
-                                <%-- phone --%>
-                                <div class="form-group">
-                                    <label for="inputPhone" class="col-sm-2 control-label">手机号</label>
+                              <%-- phone --%>
+                            <div class="form-group">
+                                <label for="phone" class="col-sm-2 control-label">手机号</label>
 
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="请输入手机号" value="${createUser.phone}">
-                                    </div>
+                                <div class="col-sm-10">
+                                    <form:input cssClass="form-control" path="phone" placeholder="请输入手机号" />
                                 </div>
+                            </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="button" class="btn btn-default" onclick="history.go(-1);">返回</button>
                                 <button type="submit" class="btn btn-info pull-right">提交</button>
                             </div>
-                            <!-- /.box-footer -->
-                        </form>
+                        </form:form>
+
+                        <%--<form class="form-horizontal" action="/user/save" method="post">--%>
+                        <%----%>
+                            <%--<!-- /.box-footer -->--%>
+                        <%--</form>--%>
                     </div>
                 </div>
             </div>
