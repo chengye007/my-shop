@@ -35,10 +35,16 @@ public class TbUserServiceImpl implements TbUserService {
             tbUser.setUpdated(new Date());
             // 新增用户
             if (tbUser.getId() == null) {
-                // 加密密码
-                tbUser.setPassword(DigestUtils.md5DigestAsHex(tbUser.getPassword().getBytes()));
-                tbUser.setCreated(new Date());
-                tbUserDao.insert(tbUser);
+                // 添加用户已经存在
+                if (isExist(tbUser)) {
+                    baseResult.setMessage("添加用户已经存在");
+                }
+                else {
+                    // 加密密码
+                    tbUser.setPassword(DigestUtils.md5DigestAsHex(tbUser.getPassword().getBytes()));
+                    tbUser.setCreated(new Date());
+                    tbUserDao.insert(tbUser);
+                }
             }
 
             //  编辑用户
@@ -71,11 +77,6 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     @Override
-    public List<TbUser> selectByName(String name) {
-        return tbUserDao.selectByName(name);
-    }
-
-    @Override
     public TbUser login(String email, String password) {
         TbUser userByEmail = tbUserDao.getUserByEmail(email);
         if (userByEmail != null) {
@@ -99,7 +100,7 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
 
-
+    /*******************私有函数*******************/
     /**
      * 检查提交数据的合法性
      * @param tbUser
@@ -130,9 +131,6 @@ public class TbUserServiceImpl implements TbUserService {
             baseResult = BaseResult.fail("手机格式不正确");
         }
 
-        else if (isExist(tbUser)) {
-            baseResult = BaseResult.fail("用户已经存在");
-        }
         return baseResult;
     }
 

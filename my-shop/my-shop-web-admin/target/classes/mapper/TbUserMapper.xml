@@ -72,15 +72,6 @@
             a.email = #{email}
     </select>
 
-    <select id="selectByName" resultType="TbUser">
-        SELECT
-            <include refid="tbuserCols"></include>
-        FROM
-            tb_user AS a
-        WHERE
-            a.username LIKE CONCAT ('%', #{username}, '%')
-    </select>
-
     <select id="search" resultType="TbUser">
         SELECT
             <include refid="tbuserCols"></include>

@@ -56,6 +56,8 @@
                         <!-- /.box-header -->
                         <!-- form start -->
                         <form:form id="inputForm" cssClass="form-horizontal" action="/user/save" method="post" modelAttribute="tbUser">
+                        <form:hidden path="id" />
+
                         <div class="box-body">
                                 <%-- email --%>
                             <div class="form-group">

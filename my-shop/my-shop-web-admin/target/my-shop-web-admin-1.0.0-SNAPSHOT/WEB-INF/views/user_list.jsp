@@ -103,15 +103,14 @@
                         <div class="box-header">
                             <h3 class="box-title">用户列表</h3>
 
-                            <div class="row" style="margin-top: 10px;">
-                                <div class="col-xs-12">
-                                    <a href="/user/form" type="button" class="btn btn-sm btn-default"><i class="fa  fa-user-plus"></i>添加</a>&nbsp;&nbsp;&nbsp;
-                                    <button type="button" class="btn btn-sm btn-default" onclick="App.deleteMulti('/user/delete')"><i class="fa fa-trash"></i>删除</button>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" type="button" class="btn btn-sm btn-default"><i class="fa fa-download"></i>导入</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" type="button" class="btn btn-sm btn-default"><i class="fa fa-upload"></i>导出</a>&nbsp;&nbsp;&nbsp;
-                                    <button type="button" class="btn btn-sm btn-info btn-default" onclick="$('.box-info-search').css('display') == 'none' ?
+                            <div class="box-body">
+                                <a href="/user/form" type="button" class="btn btn-sm btn-default"><i class="fa  fa-user-plus"></i>添加</a>&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-sm btn-default" onclick="App.deleteMulti('/user/delete')"><i class="fa fa-trash"></i>删除</button>&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-sm btn-default" onclick="App.importFile()"><i class="fa fa-download"></i>导入</button>&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-sm btn-default" onclick="App.outputFile()"><i class="fa fa-upload"></i>导出</button>&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-sm btn-info btn-default" onclick="$('.box-info-search').css('display') == 'none' ?
                                         $('.box-info-search').show('fast') : $('.box-info-search').hide('fast')"><i class="fa fa-search"></i>搜索</button>
-                                </div>
+
                             </div>
                             <%--<div class="input-group-btn">--%>
                                 <%--<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>--%>
@@ -119,8 +118,8 @@
 
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
+                        <div class="box-body table-responsive">
+                            <table id="dataTable" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th><input type="checkbox" class="minimal icheck_master" /></th>
@@ -144,8 +143,8 @@
                                         <td>${tbUser.email}</td>
                                         <td><fmt:formatDate value="${tbUser.updated}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
                                         <td>
-                                            <a href="#" type="button" class="btn btn-sm btn-default"><i class="fa fa-search"></i>查看</a>&nbsp;&nbsp;&nbsp;
-                                            <a href="#" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>&nbsp;&nbsp;&nbsp;
+                                            <button type="button" class="btn btn-sm btn-default" onclick="App.showDetail('/user/detail?id=${tbUser.id}')"><i class="fa fa-search"></i>查看</button>&nbsp;&nbsp;&nbsp;
+                                            <a href="/user/form?id=${tbUser.id}" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>&nbsp;&nbsp;&nbsp;
                                             <a href="#" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>删除</a>
                                         </td>
                                     </tr>
@@ -168,7 +167,15 @@
 <sys:modal />
 
 <jsp:include page="../includes/footer.jsp" />
-
+<script>
+    $(document).ready( function () {
+        $('#dataTable').DataTable({
+            "info": false,
+            "lengthChange":false,
+            "processing":true
+        });
+    });
+</script>
 
 </body>
 </html>

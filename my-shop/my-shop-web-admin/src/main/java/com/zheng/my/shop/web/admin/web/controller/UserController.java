@@ -113,4 +113,14 @@ public class UserController {
 //        System.out.println(ids);
         return baseResult;
     }
+
+    /**
+     * 显示用户详情
+     * @param tbUser
+     * @return
+     */
+    @RequestMapping(value = "detail", method = RequestMethod.GET)
+    public String detail(TbUser tbUser) {
+        return "user_detail";
+    }
 }

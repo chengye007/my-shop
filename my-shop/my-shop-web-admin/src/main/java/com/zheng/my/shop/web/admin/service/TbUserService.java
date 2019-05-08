@@ -7,23 +7,44 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface TbUserService {
-    List<TbUser> selectAll();
-
-    BaseResult save(TbUser tbUser);
-
-    void delete(long id);
-
-    void update(TbUser user);
-
-    TbUser getById(long id);
-
-    List<TbUser> selectByName(String name);
 
     /**
-     * login function
-     * @param email email
-     * @param password password
-     * @return user information or null
+     * 查询全部用户信息
+     * @return  用户信息链表
+     */
+    List<TbUser> selectAll();
+
+    /**
+     * 保存 或者 添加 用户信息
+     * @param tbUser
+     * @return
+     */
+    BaseResult save(TbUser tbUser);
+
+    /**
+     * 根据 id 删除用户信息
+     * @param id
+     */
+    void delete(long id);
+
+    /**
+     * 更新指定用户信息
+     * @param user
+     */
+    void update(TbUser user);
+
+    /**
+     * 根据 ID 获取用户信息
+     * @param id
+     * @return
+     */
+    TbUser getById(long id);
+
+    /**
+     * 登录方法
+     * @param email
+     * @param password
+     * @return 返回用户信息，不存在返回 null
      */
     TbUser login(String email, String password);
 
@@ -35,7 +56,7 @@ public interface TbUserService {
     List<TbUser> search(TbUser tbUser);
 
     /**
-     * 删除ids中的信息
+     * 批量删除 ids 中符合条件的 user 信息
      * @param ids
      */
     void deleteMulti(String[] ids);

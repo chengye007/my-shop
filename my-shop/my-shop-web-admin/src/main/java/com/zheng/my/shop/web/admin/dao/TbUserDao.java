@@ -18,40 +18,33 @@ public interface TbUserDao {
     List<TbUser> selectAll();
 
     /**
-     * insert a new user
+     * 添加新用户
      * @param user
      */
     void insert(TbUser user);
 
     /**
-     * delete a user
+     * 删除一条用户信息
      * @param user
      */
     void delete(TbUser user);
 
     /**
-     * update a user information
+     * 更新一条用户信息
      * @param user
      */
     void update(TbUser user);
 
     /**
-     * get user by id
+     * 根据 ID 查询用户信息
      * @param user
      */
     TbUser getById(TbUser user);
 
     /**
-     * get user by name
-     * @param username
-     * @return
-     */
-    List<TbUser> selectByName(String username);
-
-    /**
-     * get user entry by the email
+     * 根据 email 查询用户信息
      * @param email
-     * @return user information or null
+     * @return 有信息返回 TbUser 对象， 否则返回 null
      */
     TbUser getUserByEmail(String email);
 
@@ -63,7 +56,7 @@ public interface TbUserDao {
     List<TbUser> search(TbUser tbUser);
 
     /**
-     * 删除符合数组 id 的信息
+     * 删除符合数组在数组 ids 中的全部用户信息
      * @param ids
      */
     void deleteMulti(String[] ids);

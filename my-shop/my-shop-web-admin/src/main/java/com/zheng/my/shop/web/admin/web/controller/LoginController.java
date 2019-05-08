@@ -1,9 +1,7 @@
 package com.zheng.my.shop.web.admin.web.controller;
 
 import com.zheng.my.shop.domain.TbUser;
-import com.zheng.my.shop.domain.User;
 import com.zheng.my.shop.web.admin.commons.constant.ConstantUtils;
-import com.zheng.my.shop.web.admin.commons.utils.CookieUtils;
 import com.zheng.my.shop.web.admin.service.TbUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,7 +67,6 @@ public class LoginController {
      */
     @RequestMapping(value = "logout",method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {
-        System.out.println("logout");
         // clean the session content and redirect login page
         request.getSession().invalidate();
         return "redirect:/login";
