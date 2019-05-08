@@ -3,13 +3,11 @@ package com.zheng.my.shop.web.admin.web.controller;
 import com.zheng.my.shop.commons.dto.BaseResult;
 import com.zheng.my.shop.domain.TbUser;
 import com.zheng.my.shop.web.admin.service.TbUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -87,14 +85,32 @@ public class UserController {
 
     /**
      * 模糊查询 关键字为 邮箱 姓名 或者 电话
-     * @param keyWord
+     * @param tbUser
      * @param model
      * @return
      */
     @RequestMapping(value = "search", method = RequestMethod.POST)
-    public String search(String keyWord, Model model) {
-        List<TbUser> tbUsers = tbUserService.search(keyWord);
+    public String search(TbUser tbUser, Model model) {
+        List<TbUser> tbUsers = tbUserService.search(tbUser);
         model.addAttribute("tbUsers", tbUsers);
         return "user_list";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public BaseResult delete(String ids) {
+        BaseResult baseResult = null;
+
+        if (StringUtils.isNotBlank(ids)) {
+            String[] idArray = ids.split(",");
+            tbUserService.deleteMulti(idArray);
+            baseResult = BaseResult.success("删除数据成功");
+        }
+
+        else {
+            baseResult.fail("删除数据失败");
+        }
+//        System.out.println(ids);
+        return baseResult;
     }
 }

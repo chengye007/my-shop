@@ -89,14 +89,13 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     @Override
-    public List<TbUser> search(String keyWord) {
-        TbUser tbUser = new TbUser();
-
-        tbUser.setUsername(keyWord);
-        tbUser.setEmail(keyWord);
-        tbUser.setPhone(keyWord);
-
+    public List<TbUser> search(TbUser tbUser) {
         return tbUserDao.search(tbUser);
+    }
+
+    @Override
+    public void deleteMulti(String[] ids) {
+        tbUserDao.deleteMulti(ids);
     }
 
 

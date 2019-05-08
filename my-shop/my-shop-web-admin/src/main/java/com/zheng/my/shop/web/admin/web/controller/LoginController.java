@@ -69,7 +69,7 @@ public class LoginController {
      */
     @RequestMapping(value = "logout",method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {
-
+        System.out.println("logout");
         // clean the session content and redirect login page
         request.getSession().invalidate();
         return "redirect:/login";

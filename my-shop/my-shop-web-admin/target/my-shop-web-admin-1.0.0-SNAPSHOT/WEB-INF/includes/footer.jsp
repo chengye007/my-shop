@@ -30,5 +30,9 @@
 <script src="/static/assets/plugins/jquery-validation-1.19.0/js/localization/messages_zh.js"></script>
 <script src="/static/assets/plugins/jquery-validation-1.19.0/js/additional-methods.min.js"></script>
 
+<!-- iCheck 1.0.1 -->
+<script src="/static/assets/plugins/iCheck/icheck.min.js"></script>
+
 <!-- App -->
 <script src="/static/assets/app/validate.js"></script>
+<script src="/static/assets/app/app.js"></script>

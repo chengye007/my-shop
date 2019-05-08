@@ -88,16 +88,26 @@
             tb_user AS a
         <where>
             <if test="username != null and username != ''">
-                OR a.username LIKE CONCAT('%', #{username}, '%')
+                AND a.username LIKE CONCAT('%', #{username}, '%')
             </if>
             <if test="email != null and email != ''">
-                OR a.email LIKE CONCAT('%', #{email}, '%')
+                AND a.email LIKE CONCAT('%', #{email}, '%')
             </if>
             <if test="phone != null and phone != ''">
-                OR a.phone LIKE CONCAT('%', #{phone}, '%')
+                AND a.phone LIKE CONCAT('%', #{phone}, '%')
             </if>
         </where>
     </select>
+
+    <delete id="deleteMulti">
+        DELETE FROM tb_user
+        WHERE id IN
+        <if test="array != null and array.length > 0">
+            <foreach collection="array" open="(" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </if>
+    </delete>
 
 
 </mapper>

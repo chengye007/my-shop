@@ -29,8 +29,14 @@ public interface TbUserService {
 
     /**
      * 按邮箱、手机号码 和 姓名进行查找
-     * @param keyWord
+     * @param tbUser
      * @return
      */
-    List<TbUser> search(String keyWord);
+    List<TbUser> search(TbUser tbUser);
+
+    /**
+     * 删除ids中的信息
+     * @param ids
+     */
+    void deleteMulti(String[] ids);
 }
