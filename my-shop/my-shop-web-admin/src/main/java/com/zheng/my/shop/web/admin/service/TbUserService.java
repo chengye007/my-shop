@@ -2,8 +2,6 @@ package com.zheng.my.shop.web.admin.service;
 
 import com.zheng.my.shop.commons.dto.BaseResult;
 import com.zheng.my.shop.domain.TbUser;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 public interface TbUserService {
