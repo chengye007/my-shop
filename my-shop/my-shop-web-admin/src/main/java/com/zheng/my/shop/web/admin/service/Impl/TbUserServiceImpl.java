@@ -5,7 +5,6 @@ import com.zheng.my.shop.commons.utils.RegexUtils;
 import com.zheng.my.shop.domain.TbUser;
 import com.zheng.my.shop.web.admin.dao.TbUserDao;
 import com.zheng.my.shop.web.admin.service.TbUserService;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,7 +115,7 @@ public class TbUserServiceImpl implements TbUserService {
         }
 
         else if (StringUtils.isBlank(tbUser.getPassword())) {
-            baseResult = BaseResult.fail("  密码不能为空");
+            baseResult = BaseResult.fail("密码不能为空");
         }
 
         else if (StringUtils.isBlank(tbUser.getUsername())) {

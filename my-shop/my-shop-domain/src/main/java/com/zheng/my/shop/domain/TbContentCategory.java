@@ -3,11 +3,20 @@ package com.zheng.my.shop.domain;
 import java.io.Serializable;
 
 public class TbContentCategory implements Serializable {
-    private Long parentId;
-    private String name;
+    private Long    id;
+    private Long    parentId;
+    private String  name;
     private Integer status;
     private Integer sortOrder;
     private Boolean isParent;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getParentId() {
         return parentId;

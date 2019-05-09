@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zheng.my.shop.web.admin.dao.TbContentCategoryDao">
+    <sql id="contentCategoryColumns">
+        a.id,
+        a.parent_id AS parentId,
+        a.name,
+        a.status,
+        a.sort_order AS sortOrder,
+        a.is_parent AS isParent,
+        a.created,
+        a.updated
+    </sql>
+
+    <select id="selectAll" resultType="TbContentCategory">
+        SELECT
+        <include refid="contentCategoryColumns" />
+        FROM
+        tb_content_category AS a
+        ORDER BY
+        parent_id ASC,
+        sort_order ASC,
+        is_parent DESC
+    </select>
+</mapper>

@@ -72,10 +72,19 @@
                             <table id="dataTable" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
+                                    <td>ID</td>
+                                    <td>名称</td>
+                                    <td>排序</td>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <c:forEach items="${tbContentCategories}" var="tbContentCategory">
+                                    <tr>
+                                        <td>${tbContentCategory.id}</td>
+                                        <td>${tbContentCategory.name}</td>
+                                        <td>${tbContentCategory.sortOrder}</td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
