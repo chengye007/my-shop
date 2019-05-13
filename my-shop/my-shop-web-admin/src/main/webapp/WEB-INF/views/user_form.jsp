@@ -54,54 +54,55 @@
                             <h3 class="box-title">${tbUser.id == null ? "新增" : "编辑"}用户</h3>
                         </div>
                         <!-- /.box-header -->
-                        <!-- form start -->
-                        <form:form id="inputForm" cssClass="form-horizontal" action="/user/save" method="post" modelAttribute="tbUser">
-                        <form:hidden path="id" />
+                            <!-- form start -->
+                            <form:form id="inputForm" cssClass="form-horizontal" action="/user/save" method="post" modelAttribute="tbUser">
+                            <form:hidden path="id" />
 
-                        <div class="box-body">
-                                <%-- email --%>
-                            <div class="form-group">
-                                <label for="email" class="col-sm-2 control-label">邮箱</label>
+                            <div class="box-body">
+                                    <%-- email --%>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">邮箱</label>
 
-                                <div class="col-sm-10">
-                                    <form:input cssClass="form-control required email" path="email" placeholder="请输入邮箱" />
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control required email" path="email" placeholder="请输入邮箱" />
+                                    </div>
                                 </div>
-                            </div>
-                                <%-- password --%>
-                            <div class="form-group">
-                                <label for="password" class="col-sm-2 control-label">密码</label>
+                                    <%-- password --%>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">密码</label>
 
-                                <div class="col-sm-10">
-                                    <form:password cssClass="form-control required" path="password" placeholder="请输入密码" />
+                                    <div class="col-sm-10">
+                                        <form:password cssClass="form-control required" path="password" placeholder="请输入密码" />
+                                    </div>
                                 </div>
-                            </div>
 
-                                <%-- name --%>
-                            <div class="form-group">
-                                <label for="username" class="col-sm-2 control-label">姓名</label>
+                                    <%-- name --%>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label">姓名</label>
 
-                                <div class="col-sm-10">
-                                    <form:input cssClass="form-control required" path="username" placeholder="请输入姓名" />
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control required" path="username" placeholder="请输入姓名" />
+                                    </div>
                                 </div>
-                            </div>
 
-                              <%-- phone --%>
-                            <div class="form-group">
-                                <label for="phone" class="col-sm-2 control-label">手机号</label>
+                                  <%-- phone --%>
+                                <div class="form-group">
+                                    <label for="phone" class="col-sm-2 control-label">手机号</label>
 
-                                <div class="col-sm-10">
-                                    <form:input cssClass="form-control required mobile" path="phone" placeholder="请输入手机号" />
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control required mobile" path="phone" placeholder="请输入手机号" />
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- /.box-body -->
-                            <div class="box-footer">
-                                <button type="button" class="btn btn-default" onclick="history.go(-1);">返回</button>
-                                <button type="submit" class="btn btn-info pull-right">提交</button>
-                            </div>
-                        </form:form>
-
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-default" onclick="history.go(-1);">返回</button>
+                                    <button type="submit" class="btn btn-info pull-right">提交</button>
+                                </div>
+                            </form:form>
+                        </div>
                     </div>
                 </div>
+            </div>
         </section>
 
     </div>

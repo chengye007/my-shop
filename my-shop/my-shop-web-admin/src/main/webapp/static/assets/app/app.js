@@ -150,6 +150,47 @@ var App = function () {
             }
         });
     };
+    
+    var handlerInitZTree = function (url, autoParam, callback) {
+        var setting = {
+            view: {
+                selectedMulti: false
+            },
+            async: {
+                enable: true,
+                url: url,
+                autoParam: autoParam,
+                type: "get"
+            }
+        };
+
+        $.fn.zTree.init($("#myTree"), setting);
+
+        $("#modalBtnOk").bind("click", function () {
+            // 获取控件
+            var zTree = $.fn.zTree.getZTreeObj("myTree");
+
+            // 获取选中节点
+            var nodes = nodes = zTree.getSelectedNodes();
+
+            // 未选择节点
+            if (0 == nodes.length) {
+                alert("请选择一个节点");
+            }
+            // 选择节点
+            else {
+                callback(nodes);
+            }
+        });
+    };
+
+    var handlerInitDataTable = function () {
+        $('#dataTable').DataTable({
+            "info": false,
+            "lengthChange":false,
+            "processing":true
+        });
+    };
 
     /**
      * 导入文件
@@ -178,7 +219,8 @@ var App = function () {
         Init: function () {
             handlerInitICheck();
             handlerCheckAll();
-        },
+            // handlerInitDataTable();
+         },
 
         /**
          * 批量删除
@@ -206,6 +248,10 @@ var App = function () {
          */
         outputFile: function () {
             handlerOutputFile();
+        },
+
+        InitZTree: function (url, autoParam, callback) {
+            handlerInitZTree(url, autoParam, callback);
         }
     }
 }();

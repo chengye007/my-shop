@@ -12,4 +12,18 @@ public interface TbContentCategoryDao {
      * @return
      */
     List<TbContentCategory> selectAll();
+
+    /**
+     * 根据 Id 查询 TbContentCategory
+     * @param
+     * @return
+     */
+    TbContentCategory getById(TbContentCategory tbContentCategory);
+
+    /**
+     * 根据 pid 查询内容
+     * @param
+     * @return
+     */
+    List<TbContentCategory> selectByPid(TbContentCategory tbContentCategory);
 }

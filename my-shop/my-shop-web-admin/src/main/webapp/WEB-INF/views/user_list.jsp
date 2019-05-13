@@ -112,10 +112,6 @@
                                         $('.box-info-search').show('fast') : $('.box-info-search').hide('fast')"><i class="fa fa-search"></i>搜索</button>
 
                             </div>
-                            <%--<div class="input-group-btn">--%>
-                                <%--<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>--%>
-                            <%--</div>--%>
-
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive">
@@ -133,25 +129,23 @@
                                 </thead>
 
                                 <tbody>
-                                <c:forEach items="${tbUsers}" var="tbUser">
-                                    <tr>
-                                        <td><input id="${tbUser.id}" type="checkbox" class="minimal" /></td>
-                                        <td>${tbUser.id}</td>
-                                        <td>${tbUser.username}</td>
-                                        <td>${tbUser.phone}</td>
-                                        <%--<td><span class="label label-success">Approved</span></td>--%>
-                                        <td>${tbUser.email}</td>
-                                        <td><fmt:formatDate value="${tbUser.updated}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-default" onclick="App.showDetail('/user/detail?id=${tbUser.id}')"><i class="fa fa-search"></i>查看</button>&nbsp;&nbsp;&nbsp;
-                                            <a href="/user/form?id=${tbUser.id}" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>&nbsp;&nbsp;&nbsp;
-                                            <a href="#" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>删除</a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+                                    <c:forEach items="${tbUsers}" var="tbUser">
+                                        <tr>
+                                            <td><input id="${tbUser.id}" type="checkbox" class="minimal" /></td>
+                                            <td>${tbUser.id}</td>
+                                            <td>${tbUser.username}</td>
+                                            <td>${tbUser.phone}</td>
+                                            <%--<td><span class="label label-success">Approved</span></td>--%>
+                                            <td>${tbUser.email}</td>
+                                            <td><fmt:formatDate value="${tbUser.updated}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-default" onclick="App.showDetail('/user/detail?id=${tbUser.id}')"><i class="fa fa-search"></i>查看</button>&nbsp;&nbsp;&nbsp;
+                                                <a href="/user/form?id=${tbUser.id}" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>&nbsp;&nbsp;&nbsp;
+                                                <a href="#" type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>删除</a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
-
-
                             </table>
                         </div>
                         <!-- /.box-body -->
@@ -168,7 +162,7 @@
 
 <jsp:include page="../includes/footer.jsp" />
 <script>
-    $(document).ready( function () {
+    $(function () {
         $('#dataTable').DataTable({
             "info": false,
             "lengthChange":false,
@@ -176,6 +170,5 @@
         });
     });
 </script>
-
 </body>
 </html>

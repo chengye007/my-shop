@@ -100,7 +100,6 @@ public class UserController {
     @RequestMapping(value = "delete", method = RequestMethod.POST)
     public BaseResult delete(String ids) {
         BaseResult baseResult = null;
-
         if (StringUtils.isNotBlank(ids)) {
             String[] idArray = ids.split(",");
             tbUserService.deleteMulti(idArray);
@@ -110,7 +109,6 @@ public class UserController {
         else {
             baseResult.fail("删除数据失败");
         }
-//        System.out.println(ids);
         return baseResult;
     }
 

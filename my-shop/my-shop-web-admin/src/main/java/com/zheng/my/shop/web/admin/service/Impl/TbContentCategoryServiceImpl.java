@@ -25,4 +25,21 @@ public class TbContentCategoryServiceImpl implements TbContentCategoryService {
         return tbContentCategoryDao.selectAll();
     }
 
+    @Override
+    public TbContentCategory getById(Long id) {
+        TbContentCategory tbContentCategory = new TbContentCategory();
+        tbContentCategory.setId(id);
+        return tbContentCategoryDao.getById(tbContentCategory);
+    }
+    /**
+     * 根据 pid 查询所有子节点
+     * @param pid
+     * @return
+     */
+    public List<TbContentCategory> selectByPid(Long pid) {
+        TbContentCategory tbContentCategory = new TbContentCategory();
+        tbContentCategory.setParentId(pid);
+        return tbContentCategoryDao.selectByPid(tbContentCategory);
+    }
+
 }

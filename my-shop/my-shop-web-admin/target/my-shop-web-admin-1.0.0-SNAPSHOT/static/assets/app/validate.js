@@ -20,7 +20,7 @@ var Validate = function () {
                 error.insertAfter(element);
             }
         });
-    }
+    };
 
     /**
      * 增加自定义验证规则

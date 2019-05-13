@@ -1,7 +1,11 @@
 package com.zheng.my.shop.domain;
 
-import java.io.Serializable;
+import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+@Data
 public class TbContentCategory implements Serializable {
     private Long    id;
     private Long    parentId;
@@ -9,52 +13,6 @@ public class TbContentCategory implements Serializable {
     private Integer status;
     private Integer sortOrder;
     private Boolean isParent;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
-
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
-    }
-
-    public Boolean getParent() {
-        return isParent;
-    }
-
-    public void setParent(Boolean parent) {
-        isParent = parent;
-    }
+    private Date    created;
+    private Date    updated;
 }

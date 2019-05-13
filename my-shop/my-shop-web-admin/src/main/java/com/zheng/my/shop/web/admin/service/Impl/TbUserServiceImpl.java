@@ -69,7 +69,7 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     @Override
-    public TbUser getById(long id) {
+    public TbUser getById(Long id) {
         TbUser user = new TbUser();
         user.setId(id);
         return tbUserDao.getById(user);

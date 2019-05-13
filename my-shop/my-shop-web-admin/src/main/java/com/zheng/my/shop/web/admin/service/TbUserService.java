@@ -36,7 +36,7 @@ public interface TbUserService {
      * @param id
      * @return
      */
-    TbUser getById(long id);
+    TbUser getById(Long id);
 
     /**
      * 登录方法
