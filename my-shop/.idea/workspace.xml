@@ -944,7 +944,7 @@
     <property name="LombokPluginIS_VAL_Enabled" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557707222375" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557707580836" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/hibernate_04" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -1227,11 +1227,11 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.TbUserServiceTest.insert" />
-      <item itemvalue="Tomcat Server.my-shop" />
       <item itemvalue="JUnit.TbUserServiceTest.login" />
       <item itemvalue="JUnit.TbUserServiceTest.update" />
       <item itemvalue="JUnit.TbUserServiceTest.testSelectAll" />
       <item itemvalue="JUnit.TbContentServiceTest.shouldSelectAll" />
+      <item itemvalue="Tomcat Server.my-shop" />
     </list>
     <recent_temporary>
       <list>
