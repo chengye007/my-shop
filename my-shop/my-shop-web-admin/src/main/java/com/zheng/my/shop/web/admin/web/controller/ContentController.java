@@ -104,7 +104,7 @@ public class ContentController {
         }
 
         else {
-            baseResult.fail("删除数据失败");
+            baseResult = BaseResult.fail("删除数据失败");
         }
         return baseResult;
     }

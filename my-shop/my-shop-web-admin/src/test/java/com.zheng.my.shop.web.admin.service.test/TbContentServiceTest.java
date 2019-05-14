@@ -1,8 +1,9 @@
 package com.zheng.my.shop.web.admin.service.test;
 
+import com.zheng.my.shop.commons.dto.BaseResult;
 import com.zheng.my.shop.domain.TbContent;
 import com.zheng.my.shop.web.admin.service.TbContentService;
-import com.zheng.my.shop.web.admin.service.TbUserService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,28 @@ public class TbContentServiceTest {
         for (TbContent tbContent : tbContents) {
             System.out.println(tbContent);
         }
+    }
+
+    @Test
+    public void shouldSave() {
+        TbContent tbContent = new TbContent();
+        tbContent.setCategoryId(89L);
+        tbContent.setTitle("a");
+        tbContent.setSubTitle("a");
+        tbContent.setTitleDesc("a");
+        tbContent.setUrl("a");
+        tbContent.setPic("a");
+        tbContent.setPic2("a");
+        tbContent.setContent("a");
+
+        BaseResult saveResult = tbContentService.save(tbContent);
+        Assert.assertEquals(BaseResult.STATUS_SUCCESS, saveResult.getStatus());
+    }
+
+    @Test
+    public void shouldDelete() {
+        tbContentService.delete(32L);
+        TbContent content = tbContentService.getById(32L);
+        Assert.assertNull(content);
     }
 }
