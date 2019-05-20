@@ -14,12 +14,17 @@ import java.util.List;
 
 @Service
 public class TbContentCategoryServiceImpl implements TbContentCategoryService {
+
+    private final TbContentCategoryDao tbContentCategoryDao;
+
     @Autowired
-    private TbContentCategoryDao tbContentCategoryDao;
+    public TbContentCategoryServiceImpl(TbContentCategoryDao tbContentCategoryDao) {
+        this.tbContentCategoryDao = tbContentCategoryDao;
+    }
 
     /**
      * 查询全部内容页
-     * @return
+     * @return TbContentCategory list
      */
     public List<TbContentCategory> selectAll() {
         return tbContentCategoryDao.selectAll();
@@ -33,8 +38,8 @@ public class TbContentCategoryServiceImpl implements TbContentCategoryService {
     }
     /**
      * 根据 pid 查询所有子节点
-     * @param pid
-     * @return
+     * @param pid pid
+     * @return TbContentCategory list
      */
     public List<TbContentCategory> selectByPid(Long pid) {
         TbContentCategory tbContentCategory = new TbContentCategory();

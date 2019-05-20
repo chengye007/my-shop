@@ -14,8 +14,14 @@ import java.util.List;
 
 @Service
 public class TbContentServiceImpl implements TbContentService {
+    private final TbContentDao tbContentDao;
+
+
     @Autowired
-    private TbContentDao tbContentDao;
+    public TbContentServiceImpl(TbContentDao tbContentDao) {
+        this.tbContentDao = tbContentDao;
+    }
+
 
     public List<TbContent> selectAll() {
         return tbContentDao.selectAll();

@@ -47,8 +47,8 @@ public class TbContentServiceTest {
 
     @Test
     public void shouldDelete() {
-        tbContentService.delete(32L);
-        TbContent content = tbContentService.getById(32L);
+        tbContentService.delete(33L);
+        TbContent content = tbContentService.getById(33L);
         Assert.assertNull(content);
     }
 }

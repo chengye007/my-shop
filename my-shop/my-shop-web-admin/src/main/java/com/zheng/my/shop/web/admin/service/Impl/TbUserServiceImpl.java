@@ -16,8 +16,13 @@ import java.util.List;
 @Service
 public class TbUserServiceImpl implements TbUserService {
 
+
+    private final TbUserDao tbUserDao;
+
     @Autowired
-    private TbUserDao tbUserDao;
+    public TbUserServiceImpl(TbUserDao tbUserDao) {
+        this.tbUserDao = tbUserDao;
+    }
 
     @Override
     public List<TbUser> selectAll() {
