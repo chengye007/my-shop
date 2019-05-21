@@ -26,8 +26,6 @@ var App = function () {
         // 获取全部checkbox
         _checkboxes = $('input[type="checkbox"].minimal')
     };
-
-
     /**
      * checkbox 的全选功能
      */
@@ -219,6 +217,7 @@ var App = function () {
         Init: function () {
             handlerInitICheck();
             handlerCheckAll();
+
             // handlerInitDataTable();
          },
 
@@ -252,7 +251,7 @@ var App = function () {
 
         InitZTree: function (url, autoParam, callback) {
             handlerInitZTree(url, autoParam, callback);
-        }
+        },
     }
 }();
 

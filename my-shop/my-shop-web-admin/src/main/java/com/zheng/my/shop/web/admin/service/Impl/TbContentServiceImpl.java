@@ -94,16 +94,8 @@ public class TbContentServiceImpl implements TbContentService {
             baseResult = BaseResult.fail("titleDesc 不能为空");
         }
 
-        else if (StringUtils.isBlank(tbContent.getUrl())) {
-            baseResult = BaseResult.fail("url 不能为空");
-        }
-
         else if (StringUtils.isBlank(tbContent.getPic())) {
             baseResult = BaseResult.fail("pic 不能为空");
-        }
-
-        else if (StringUtils.isBlank(tbContent.getPic2())) {
-            baseResult = BaseResult.fail("pic2 不能为空");
         }
 
         else if (StringUtils.isBlank(tbContent.getContent())) {

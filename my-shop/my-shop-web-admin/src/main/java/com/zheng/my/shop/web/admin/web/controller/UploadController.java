@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * 文件上传控制器
@@ -20,16 +21,21 @@ import java.util.Map;
 @Controller
 public class UploadController {
 
+    private final String UPLOAD_DIR = "/static/upload";
+
     @ResponseBody
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public Map<String, Object> upload(MultipartFile dropzFile, HttpServletRequest request) {
         Map<String, Object> result = new HashMap<>();
 
         // 文件存在路径
-        String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
+        String filePath = request.getSession().getServletContext().getRealPath(UPLOAD_DIR);
 
+        // 获取文件后缀名
         // 文件名
         String fileName = dropzFile.getOriginalFilename();
+        String fileSufix = fileName.substring(fileName.lastIndexOf("."));
+
 
         // 查看文件夹是否存在，不存在及创建
         File uploadDir = new File(filePath);
@@ -38,7 +44,7 @@ public class UploadController {
         }
 
         // 将文件写入目录
-        File file = new File(filePath, fileName);
+        File file = new File(filePath, UPLOAD_DIR + UUID.randomUUID() + fileSufix);
         System.out.println(file.getAbsolutePath());
         try {
             dropzFile.transferTo(file);
@@ -47,7 +53,7 @@ public class UploadController {
             file.delete();
             e.printStackTrace();
         }
-
-        return null;
+        result.put("fileName", file.getName());
+        return result;
     }
 }

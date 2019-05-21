@@ -101,7 +101,7 @@
                                     <label for="url" class="col-sm-2 control-label">链接</label>
 
                                     <div class="col-sm-10">
-                                        <form:input cssClass="form-control required" path="url" placeholder="链接" />
+                                        <form:input cssClass="form-control" path="url" placeholder="链接" />
                                     </div>
                                 </div>
 
@@ -123,7 +123,7 @@
                                     <label for="pic2" class="col-sm-2 control-label">图片2</label>
 
                                     <div class="col-sm-10">
-                                        <form:input cssClass="form-control required" path="pic2" placeholder="图片2" />
+                                        <form:input cssClass="form-control" path="pic2" placeholder="图片2" />
                                     </div>
                                 </div>
 
@@ -167,19 +167,22 @@
             $("#categoryName").val(node.name);
             $("#modal-default").modal("hide");
         });
+
+
     });
 
-
-    var myDropzone = new Dropzone("#dropz", {
+    Dropzone.options.dropz = {
         url: "/upload",
         dictDefaultMessage: '拖动文件至此或者点击上传', // 设置默认的提示语句
         paramName: "dropzFile", // 传到后台的参数名称
         init: function () {
             this.on("success", function (file, data) {
                 // 上传成功触发的事件
+                $("#pic").val(data.fileName);
             });
         }
-    });
+    }
+
 </script>
 
 </body>
