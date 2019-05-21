@@ -15,6 +15,8 @@
     <title>我的商城 | 内容管理</title>
     <jsp:include page="../includes/header.jsp" />
     <link rel="stylesheet" href="/static/assets/plugins/ztree/css/zTreeStyle/zTreeStyle.min.css" />
+    <link rel="stylesheet" href="/static/assets/plugins/dropzone/min/dropzone.min.css" />
+    <link rel="stylesheet" href="/static/assets/plugins/dropzone/min/basic.min.css" />
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -109,7 +111,12 @@
 
                                     <div class="col-sm-10">
                                         <form:input cssClass="form-control required" path="pic" placeholder="图片1" />
+
+                                        <div id="dropz" class="dropzone">
+
+                                        </div>
                                     </div>
+
                                 </div>
 
                                 <div class="form-group">
@@ -149,6 +156,7 @@
 <jsp:include page="../includes/footer.jsp" />
 
 <script src="/static/assets/plugins/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+<script src="/static/assets/plugins/dropzone/min/dropzone.min.js"></script>
 
 <script>
     $(function () {
@@ -159,6 +167,18 @@
             $("#categoryName").val(node.name);
             $("#modal-default").modal("hide");
         });
+    });
+
+
+    var myDropzone = new Dropzone("#dropz", {
+        url: "/upload",
+        dictDefaultMessage: '拖动文件至此或者点击上传', // 设置默认的提示语句
+        paramName: "dropzFile", // 传到后台的参数名称
+        init: function () {
+            this.on("success", function (file, data) {
+                // 上传成功触发的事件
+            });
+        }
     });
 </script>
 
