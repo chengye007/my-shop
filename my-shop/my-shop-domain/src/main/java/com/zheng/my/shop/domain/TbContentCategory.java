@@ -15,4 +15,6 @@ public class TbContentCategory implements Serializable {
     private Boolean isParent;
     private Date    created;
     private Date    updated;
+
+    private TbContentCategory parent;
 }

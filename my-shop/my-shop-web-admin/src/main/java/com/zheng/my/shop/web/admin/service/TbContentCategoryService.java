@@ -1,5 +1,6 @@
 package com.zheng.my.shop.web.admin.service;
 
+import com.zheng.my.shop.commons.dto.BaseResult;
 import com.zheng.my.shop.domain.TbContentCategory;
 
 import java.util.List;
@@ -17,4 +18,10 @@ public interface TbContentCategoryService {
      * @return
      */
     List<TbContentCategory> selectByPid(Long pid);
+
+    /**
+     * 保存 ContentCategory 信息
+     * @param tbContentCategory
+     */
+    BaseResult save(TbContentCategory tbContentCategory);
 }

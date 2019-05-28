@@ -1,5 +1,6 @@
 package com.zheng.my.shop.web.admin.web.controller;
 
+import com.zheng.my.shop.commons.dto.BaseResult;
 import com.zheng.my.shop.domain.TbContent;
 import com.zheng.my.shop.domain.TbContentCategory;
 import com.zheng.my.shop.web.admin.service.TbContentCategoryService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +72,32 @@ public class ContentCategoryController {
     public String form() {
         return "content_category_form";
     }
+
+
+    /**
+     * 提交表单操作
+     * @param tbContentCategory
+     * @param model
+     * @param redirectAttributes
+     * @return
+     */
+    @RequestMapping(value = "save", method = RequestMethod.POST)
+    public String save(TbContentCategory tbContentCategory, Model model, RedirectAttributes redirectAttributes) {
+
+        BaseResult baseResult = tbContentCategoryService.save(tbContentCategory);
+        // 保存成功进行重定向
+        if (baseResult.getStatus() == BaseResult.STATUS_SUCCESS) {
+            redirectAttributes.addFlashAttribute("baseResult", baseResult);
+            return "redirect:/content/list";
+        }
+
+        // 保存失败 进行跳转
+        else {
+            model.addAttribute("baseResult", baseResult);
+            return "content_form";
+        }
+    }
+
 
     /*****************************private*****************************/
     /**

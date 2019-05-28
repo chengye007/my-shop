@@ -26,4 +26,16 @@ public interface TbContentCategoryDao {
      * @return
      */
     List<TbContentCategory> selectByPid(TbContentCategory tbContentCategory);
+
+    /**
+     * 插入 ContentCategory 记录
+     * @param tbContentCategory
+     */
+    void insert(TbContentCategory tbContentCategory);
+
+    /**
+     * 更新 TbContentCategory 记录
+     * @param tbContentCategory
+     */
+    void update(TbContentCategory tbContentCategory);
 }

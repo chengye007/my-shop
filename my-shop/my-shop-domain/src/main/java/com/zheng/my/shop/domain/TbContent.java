@@ -18,4 +18,6 @@ public class TbContent implements Serializable {
     private String  content;
     private Date created;
     private Date  updated;
+
+    private TbContentCategory tbContentCategory;
 }

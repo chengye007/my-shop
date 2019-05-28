@@ -1,11 +1,13 @@
 package com.zheng.my.shop.web.admin.service.Impl;
 
+import com.zheng.my.shop.commons.dto.BaseResult;
 import com.zheng.my.shop.domain.TbContentCategory;
 import com.zheng.my.shop.web.admin.dao.TbContentCategoryDao;
 import com.zheng.my.shop.web.admin.service.TbContentCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,4 +49,36 @@ public class TbContentCategoryServiceImpl implements TbContentCategoryService {
         return tbContentCategoryDao.selectByPid(tbContentCategory);
     }
 
+    /**
+     * 保存 TbContentCategory 信息
+     * @param tbContentCategory
+     */
+    public BaseResult save(TbContentCategory tbContentCategory) {
+        BaseResult baseResult = ckeckContentCategory(tbContentCategory);
+        // 检查成功
+        if (baseResult.getStatus() == BaseResult.STATUS_SUCCESS) {
+            tbContentCategory.setUpdated(new Date());
+            // 新增
+            if (tbContentCategory.getId() == null) {
+                tbContentCategory.setCreated(new Date());
+                tbContentCategoryDao.insert(tbContentCategory);
+            }
+
+            //  编辑
+            else {
+                tbContentCategoryDao.update(tbContentCategory);
+            }
+            baseResult.setMessage("保存内容信息成功");
+        }
+        return baseResult;
+    }
+
+    /**
+     * 检查 TbContentCategory 是否 符合要求
+     * @param tbContentCategory
+     * @return
+     */
+    private BaseResult ckeckContentCategory(TbContentCategory tbContentCategory) {
+        return BaseResult.success();
+    }
 }

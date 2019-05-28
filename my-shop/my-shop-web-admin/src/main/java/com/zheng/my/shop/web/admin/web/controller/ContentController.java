@@ -31,6 +31,7 @@ public class ContentController {
             content = new TbContent();
         }
 
+//        System.out.println(content.getTbContentCategory().getName());
         return content;
     }
 

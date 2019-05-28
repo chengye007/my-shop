@@ -41,22 +41,24 @@ public class TbUserServiceImpl implements TbUserService {
             if (tbUser.getId() == null) {
                 // 添加用户已经存在
                 if (isExist(tbUser)) {
-                    baseResult.setMessage("添加用户已经存在");
+                    baseResult = BaseResult.fail("添加用户已经存在");
                 }
                 else {
                     // 加密密码
                     tbUser.setPassword(DigestUtils.md5DigestAsHex(tbUser.getPassword().getBytes()));
                     tbUser.setCreated(new Date());
                     tbUserDao.insert(tbUser);
+                    baseResult.setMessage("保存用户信息成功");
                 }
             }
 
             //  编辑用户
             else {
                 tbUserDao.update(tbUser);
+                baseResult.setMessage("保存用户信息成功");
             }
 
-            baseResult.setMessage("保存用户信息成功");
+
         }
         return baseResult;
     }
