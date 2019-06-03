@@ -24,4 +24,6 @@ public interface TbContentCategoryService {
      * @param tbContentCategory
      */
     BaseResult save(TbContentCategory tbContentCategory);
+
+    void delete(Long id);
 }

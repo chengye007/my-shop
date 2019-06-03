@@ -54,6 +54,7 @@ public class TbUserServiceImpl implements TbUserService {
 
             //  编辑用户
             else {
+                tbUser.setPassword(DigestUtils.md5DigestAsHex(tbUser.getPassword().getBytes()));
                 tbUserDao.update(tbUser);
                 baseResult.setMessage("保存用户信息成功");
             }

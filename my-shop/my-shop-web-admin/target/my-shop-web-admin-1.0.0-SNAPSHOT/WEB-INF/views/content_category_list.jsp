@@ -58,10 +58,9 @@
                             <h3 class="box-title">分类列表</h3>
 
                             <div class="box-body">
-                                <a href="/content/category/form" type="button" class="btn btn-sm btn-default"><i class="fa  fa-user-plus"></i>添加</a>&nbsp;&nbsp;&nbsp;
+                                <a href="/content/category/form?isParent=1" type="button" class="btn btn-sm btn-default"><i class="fa  fa-user-plus"></i>添加</a>&nbsp;&nbsp;&nbsp;
                                 <button type="button" class="btn btn-sm btn-default"><i class="fa fa-download"></i>导入</button>&nbsp;&nbsp;&nbsp;
                                 <button type="button" class="btn btn-sm btn-default"><i class="fa fa-upload"></i>导出</button>&nbsp;&nbsp;&nbsp;
-
                             </div>
 
                         </div>
@@ -85,7 +84,7 @@
                                         <td>
                                             <a href="/content/category/form?id=${tbContentCategory.id}" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>&nbsp;&nbsp;&nbsp;
                                             <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>删除</button>&nbsp;&nbsp;&nbsp;
-                                            <a href="#" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>新增下级菜单</a>
+                                            <a href="/content/category/form?parentId=${tbContentCategory.id}&parent.name=${tbContentCategory.name}" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>新增下级菜单</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -18,7 +18,7 @@ public interface TbContentCategoryDao {
      * @param
      * @return
      */
-    TbContentCategory getById(TbContentCategory tbContentCategory);
+    TbContentCategory getById(Long id);
 
     /**
      * 根据 pid 查询内容
@@ -38,4 +38,10 @@ public interface TbContentCategoryDao {
      * @param tbContentCategory
      */
     void update(TbContentCategory tbContentCategory);
+
+    /**
+     * 根据 ID 删除 ContentCategory
+     * @param tbContentCategory
+     */
+    void delete(TbContentCategory tbContentCategory);
 }

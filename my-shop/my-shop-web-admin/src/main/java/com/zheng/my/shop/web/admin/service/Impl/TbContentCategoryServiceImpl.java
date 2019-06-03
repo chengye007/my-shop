@@ -34,9 +34,7 @@ public class TbContentCategoryServiceImpl implements TbContentCategoryService {
 
     @Override
     public TbContentCategory getById(Long id) {
-        TbContentCategory tbContentCategory = new TbContentCategory();
-        tbContentCategory.setId(id);
-        return tbContentCategoryDao.getById(tbContentCategory);
+        return tbContentCategoryDao.getById(id);
     }
     /**
      * 根据 pid 查询所有子节点
@@ -61,6 +59,14 @@ public class TbContentCategoryServiceImpl implements TbContentCategoryService {
             // 新增
             if (tbContentCategory.getId() == null) {
                 tbContentCategory.setCreated(new Date());
+
+                TbContentCategory parentEntry = tbContentCategoryDao.getById(tbContentCategory.getParentId());
+
+                if (parentEntry.getIsParent() == false) {
+                    parentEntry.setIsParent(true);
+                    tbContentCategoryDao.update(parentEntry);
+                }
+
                 tbContentCategoryDao.insert(tbContentCategory);
             }
 
@@ -71,6 +77,12 @@ public class TbContentCategoryServiceImpl implements TbContentCategoryService {
             baseResult.setMessage("保存内容信息成功");
         }
         return baseResult;
+    }
+
+    public void delete(Long id) {
+        TbContentCategory tbContentCategory = new TbContentCategory();
+        tbContentCategory.setId(id);
+        tbContentCategoryDao.delete(tbContentCategory);
     }
 
     /**

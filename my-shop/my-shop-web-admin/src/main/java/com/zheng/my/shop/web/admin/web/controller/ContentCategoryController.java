@@ -38,6 +38,7 @@ public class ContentCategoryController {
         else {
             contentCategory = new TbContentCategory();
         }
+
         return contentCategory;
     }
 
@@ -68,8 +69,9 @@ public class ContentCategoryController {
         return tbContentCategoryService.selectByPid(id);
     }
 
-    @RequestMapping(value = "/form", method = RequestMethod.GET)
-    public String form() {
+
+    @RequestMapping(value = "form", method = RequestMethod.GET)
+    public String form(TbContentCategory tbContentCategory) {
         return "content_category_form";
     }
 
@@ -79,22 +81,21 @@ public class ContentCategoryController {
      * @param tbContentCategory
      * @param model
      * @param redirectAttributes
-     * @return
+     * @return 跳转界面
      */
     @RequestMapping(value = "save", method = RequestMethod.POST)
     public String save(TbContentCategory tbContentCategory, Model model, RedirectAttributes redirectAttributes) {
-
         BaseResult baseResult = tbContentCategoryService.save(tbContentCategory);
         // 保存成功进行重定向
         if (baseResult.getStatus() == BaseResult.STATUS_SUCCESS) {
             redirectAttributes.addFlashAttribute("baseResult", baseResult);
-            return "redirect:/content/list";
+            return "redirect:/content/category/list";
         }
 
         // 保存失败 进行跳转
         else {
             model.addAttribute("baseResult", baseResult);
-            return "content_form";
+            return "content_category_form";
         }
     }
 

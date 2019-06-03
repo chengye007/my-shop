@@ -60,16 +60,16 @@
             sort_order,
             is_parent,
             created,
-            updated,
+            updated
         )
         VALUES(
-            parent_id = #{parentId},
-            name = #{name},
-            status = #{status},
-            sort_order = #{sortOrder},
-            is_parent = #{isParent},
-            created = #{created},
-            updated = #{updated}
+          IFNULL(#{parentId}, 0),
+          #{name},
+          IFNULL(#{status}, 1),
+          #{sortOrder},
+          IFNULL(#{isParent}, 0),
+          #{created},
+          #{updated}
         )
     </insert>
 
@@ -77,14 +77,22 @@
         UPDATE
             tb_content_category
         SET
+            id = #{id},
             parent_id = #{parentId},
             name = #{name},
             status = #{status},
             sort_order = #{sortOrder},
             is_parent = #{isParent},
             created = #{created},
-            updated = #{updated},
+            updated = #{updated}
         WHERE id = #{id}
     </update>
+
+    <delete id="delete">
+        DELETE FROM
+          tb_content_category
+        WHERE
+          id = #{id}
+    </delete>
 
 </mapper>

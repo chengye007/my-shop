@@ -58,15 +58,19 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form:form id="inputForm" cssClass="form-horizontal" action="/content/category/save" method="post" modelAttribute="tbContentCategory">
+                        <form:form action="/content/category/save" id="inputForm" cssClass="form-horizontal" method="post" modelAttribute="tbContentCategory">
                             <form:hidden path="id" />
+                            <%--<form:hidden path="parentId" />--%>
+                            <%--<form:hidden path="isParent" />--%>
+
+                            <input id="parentId" name="parentId" hidden="hidden" value="${tbContentCategory.parentId}"/>
 
                             <div class="box-body">
                                     <%-- 父节点 --%>
                                 <div class="form-group">
-                                    <label for="categoryName" class="col-sm-2 control-label">父级类目</label>
+                                    <label for="parent.name" class="col-sm-2 control-label">父级类目</label>
                                     <div class="col-sm-10">
-                                        <input id="categoryName" class="form-control required" placeholder="父级类目"
+                                        <input id="parent.name" class="form-control" placeholder="父级类目"
                                                readonly="true" data-toggle="modal" data-target="#modal-default" value="${tbContentCategory.parent.name}"/>
                                     </div>
                                 </div>
@@ -75,7 +79,7 @@
                                     <label for="name" class="col-sm-2 control-label">分类名称</label>
 
                                     <div class="col-sm-10">
-                                        <form:input cssClass="form-control required mobile" path="name" placeholder="分类名称" />
+                                        <form:input cssClass="form-control required" path="name" placeholder="分类名称" />
                                     </div>
                                 </div>
 
@@ -83,7 +87,7 @@
                                     <label for="sortOrder" class="col-sm-2 control-label">分类排序</label>
 
                                     <div class="col-sm-10">
-                                        <form:input cssClass="form-control required digits" path="sortOrder" placeholder="分类排序" />
+                                        <form:input cssClass="form-control required" path="sortOrder" placeholder="分类排序" />
                                     </div>
                                 </div>
 

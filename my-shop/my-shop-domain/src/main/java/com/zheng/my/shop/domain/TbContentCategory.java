@@ -10,8 +10,8 @@ public class TbContentCategory implements Serializable {
     private Long    id;
     private Long    parentId;
     private String  name;
-    private Integer status;
-    private Integer sortOrder;
+    private int     status;
+    private int     sortOrder;
     private Boolean isParent;
     private Date    created;
     private Date    updated;
